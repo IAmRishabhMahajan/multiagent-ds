@@ -1,0 +1,3 @@
+run:
+  artifacts_dir: "artifacts"
+  seed: 42
