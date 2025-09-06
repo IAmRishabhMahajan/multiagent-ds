@@ -1,0 +1,38 @@
+cleaning:
+  drop_missing_threshold: 0.60
+  target_missing_fail: 0.20
+  impute_numeric: median          
+  impute_categorical: most_frequent  
+  normalize_booleans: true
+  trim_strings: true
+  winsorize:
+    enabled: false
+    lower_q: 0.01
+    upper_q: 0.99
+
+profiling:
+  corr_sample_rows: 50000
+  strong_corr_threshold: 0.95
+  high_cardinality_cat: 100
+  imbalance_warn_threshold: 0.20
+
+features:
+  log_skew_threshold: 1.0
+  one_hot_min_frequency: 0.01     
+  max_one_hot_features: 50
+  drop_zero_variance: true
+  datetime_parts: [year, month, day, weekday]
+
+modeling:
+  cv_folds: 5
+  holdout_size: 0.2
+  class_weight_auto_threshold: 0.20  
+  classifiers: [logreg, random_forest, gradient_boosting]
+  regressors: [ridge, random_forest, gradient_boosting]
+
+evaluation:
+  primary_metric_classification: f1
+  primary_metric_regression: rmse
+  plot_confusion_matrix: true
+  plot_roc_pr: true
+  plot_residuals_qq: true

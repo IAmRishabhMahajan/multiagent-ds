@@ -1,5 +1,9 @@
+import src.app
+
+
 def main():
-    print("Hello from multiagent-ds!")
+    src.app.main()
+    
 
 
 if __name__ == "__main__":
