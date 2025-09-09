@@ -1,0 +1,6 @@
+{
+  "task": "classification",
+  "metric": "recall",
+  "target": "Survived",
+  "seed": 42
+}
