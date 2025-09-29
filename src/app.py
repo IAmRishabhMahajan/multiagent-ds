@@ -8,6 +8,7 @@ from src.spec.builder import build_spec
 from src.profiler.profiler import profile_dataframe
 from src.utils.common import load_config, load_knobs
 from src.cleaner.cleaner import clean_dataframe
+from src.features.pipeline import build_feature_pipeline
 
 
 
@@ -44,9 +45,13 @@ def main():
     print(f"Data card saved: {data_card_path}")
 
     # Step 5: cleaner
-    clean_path, plan_path = clean_dataframe(df, args.target, run_dir, knobs["cleaning"])
+    clean_path, plan_path, quarantine_path, quarantine_manifest_path = clean_dataframe(df, args.target, run_dir, knobs["cleaning"])
     print(f"Cleaned data saved: {clean_path}")
     print(f"Cleaning plan saved: {plan_path}")
+    print(f"Quarantined data saved: {quarantine_path}")
+    print(f"Quarantine manifest saved: {quarantine_manifest_path}")
+    pipeline_path = build_feature_pipeline(run_dir, knobs, cfg.get("seed", 42))
+    print(f"Feature pipeline saved: {pipeline_path}")
 
 
 
